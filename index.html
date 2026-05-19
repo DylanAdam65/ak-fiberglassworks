@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#0f172a]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK Fiberglass Works | Ultra-Premium RV & Marine Experts</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af', /* Professional, bright but solid blue */
+                        secondary: '#38bdf8', /* Light, bright, pleasant sky blue */
+                        dark: '#0f172a',
+                        light: '#ffffff',
+                        offwhite: '#f8fafc' /* Clean, light grayish white */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #333; }
+        h1, h2, h3, h4, h5, h6, .font-display { font-family: 'Syne', sans-serif; }
+        
+        /* Make logo pure white so it stands out */
+        .logo-white { filter: brightness(0) invert(1); }
+        
+        /* Dynamic Header - UPDATED to Glassmorphism */
+        #mainHeader { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .header-scrolled {
+            background: rgba(15, 23, 42, 0.35); /* Pure Glass Effect */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Hover Underline & Dropdown Logic */
+        .nav-link { position: relative; padding-bottom: 4px; display: inline-flex; align-items: center; gap: 4px; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 0; background-color: #38bdf8;
+            transition: width 0.4s ease;
+        }
+        .nav-link:hover::after, .group:hover .nav-link::after { width: 100%; }
+
+        /* Ultra-Smooth Dropdown */
+        .dropdown-menu {
+            opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.95);
+            transform-origin: top;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .group:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+
+        /* Edge-to-Edge Image Hover */
+        .edge-image-container { overflow: hidden; position: relative; }
+        .edge-image-container img {
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), filter 1s ease;
+            filter: grayscale(10%) brightness(0.95);
+        }
+        .edge-image-container:hover img { transform: scale(1.08); filter: grayscale(0%) brightness(1.05); }
+
+        /* Custom CTA Buttons */
+        .btn-outline {
+            position: relative; overflow: hidden; z-index: 1;
+            border: 2px solid rgba(255,255,255,0.4);
+            transition: all 0.5s ease;
+        }
+        .btn-outline::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%;
+            background-color: #38bdf8; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); z-index: -1;
+        }
+        .btn-outline:hover::before { width: 100%; }
+        .btn-outline:hover { border-color: #38bdf8; color: #ffffff; box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+
+        .btn-solid {
+            background-color: #38bdf8; color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+        }
+        .btn-solid:hover { background-color: #0284c7; transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4); color: #fff; }
+
+        /* Review Swiper Smooth Scroll */
+        .swiper-wrapper {
+            transition-timing-function: linear !important; 
+        }
+
+        /* Improved Footer Skylights.tech inspired styling */
+        .footer-skylights {
+            background-color: #0f172a;
+            position: relative;
+            /* UPDATED: Cover whole screen */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            /* Motion Graphics Gradient */
+            background: linear-gradient(-45deg, #0f172a, #0b1a40, #0a2558, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* Footer Motion Graphics Animations */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .footer-skylights::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+            opacity: 0.3;
+            z-index: 2;
+        }
+
+        /* Ambient floating orbs in footer */
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: floatOrb 20s infinite ease-in-out alternate;
+            z-index: 0;
+        }
+        .orb-1 { width: 400px; height: 400px; background: rgba(56, 189, 248, 0.15); top: -100px; left: -100px; animation-delay: 0s; }
+        .orb-2 { width: 500px; height: 500px; background: rgba(30, 64, 175, 0.2); bottom: -200px; right: -100px; animation-delay: -5s; }
+        
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, 50px) scale(1.1); }
+            100% { transform: translate(-50px, 100px) scale(0.9); }
+        }
+
+        .footer-link-hover {
+            position: relative;
+            display: inline-block;
+            color: #94a3b8; /* slate-400 */
+            z-index: 10;
+        }
+        .footer-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 1px;
+            bottom: -2px; left: 0;
+            background-color: #38bdf8;
+            transition: width 0.3s ease;
+        }
+        .footer-link-hover:hover { color: #ffffff; }
+        .footer-link-hover:hover::after { width: 100%; }
+
+        /* FAQ Accordion Styling */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #38bdf8;
+        }
+        
+        /* Star Rating Hover Effect */
+        .star-rating i { cursor: pointer; transition: color 0.2s, transform 0.2s; }
+        .star-rating i:hover { transform: scale(1.1); }
+        .star-rating i.active, .star-rating i.hover-active { color: #fbbf24; /* yellow-400 */ }
+    </style>
+</head>
+<body class="bg-light antialiased selection:bg-secondary selection:text-white">
+
+    <header class="fixed top-0 w-full z-50 pt-8 pb-4 px-6 md:px-12 xl:px-24 transition-all duration-500 bg-transparent text-white border-b border-transparent" id="mainHeader">
+        <div class="flex items-center justify-between w-full">
+            
+            <a href="index.html" class="shrink-0 z-50 group mr-auto">
+                <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/02/463201f8-84dd-4647-ba07-5ea46d588763.png.bv.webp?bv_host=akfiberglassworks.com" alt="AK Fiberglass Works" class="h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 logo-white">
+            </a>
+            
+            <div class="flex items-center ml-auto gap-8">
+                <nav class="hidden lg:flex space-x-8 items-center text-[13px] font-semibold tracking-[0.15em] uppercase">
+                    <a href="about.html" class="nav-link text-white hover:text-secondary transition-colors">About Us</a>
+                    
+                    <div class="group relative py-4">
+                        <button class="nav-link text-white hover:text-secondary transition-colors uppercase outline-none">
+                            RV / Boat Services <i class="fa-solid fa-angle-down ml-1 text-[10px]"></i>
+                        </button>
+                        <div class="dropdown-menu absolute top-[100%] left-0 w-64 bg-primary/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-sm py-2">
+                            <a href="rv-detailing.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Detailing Services</a>
+                            <a href="rv-roofing.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Roofing Services</a>
+                        </div>
+                    </div>
+
+                    <div class="group relative py-4">
+                        <button class="nav-link text-white hover:text-secondary transition-colors uppercase outline-none">
+                            Repair Services <i class="fa-solid fa-angle-down ml-1 text-[10px]"></i>
+                        </button>
+                        <div class="dropdown-menu absolute top-[100%] left-0 w-[300px] bg-primary/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-sm py-2">
+                            <a href="rv-repair.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Repair Services</a>
+                            <a href="fiberglass-repair.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">Boat & RV Fiberglass Repair Services</a>
+                            <a href="rv-inspection.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Inspection Services</a>
+                            <a href="rv-renovation.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Interior Renovation Services</a>
+                        </div>
+                    </div>
+
+                    <a href="pay.html" class="nav-link text-white hover:text-secondary transition-colors">Pay Now</a>
+                    <a href="blog.html" class="nav-link text-white hover:text-secondary transition-colors">Blog</a>
+                </nav>
+                
+                <div class="hidden lg:block shrink-0">
+                    <a href="quote.html" class="btn-outline text-white px-8 py-3.5 text-[13px] font-bold tracking-[0.15em] uppercase rounded-sm">
+                        Get A Quote
+                    </a>
+                </div>
+            </div>
+
+            <button class="lg:hidden text-white text-2xl z-50 focus:outline-none hover:text-secondary transition-colors ml-6" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars transition-all duration-300" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-0 bg-primary z-40 flex flex-col justify-center items-center space-y-6 opacity-0 pointer-events-none transition-opacity duration-500 overflow-y-auto pt-20 pb-10">
+            <a href="about.html" class="text-2xl font-display font-bold text-white mobile-link hover:text-secondary transition-colors">About Us</a>
+            <p class="text-secondary text-sm font-bold tracking-widest uppercase mt-4">RV / Boat Services</p>
+            <a href="rv-detailing.html" class="text-lg text-white/90 mobile-link hover:text-secondary transition-colors">RV Detailing</a>
+            <a href="rv-roofing.html" class="text-lg text-white/90 mobile-link hover:text-secondary transition-colors">RV Roofing</a>
+            
+            <p class="text-secondary text-sm font-bold tracking-widest uppercase mt-4">Repair Services</p>
+            <a href="rv-repair.html" class="text-lg text-white/90 mobile-link hover:text-secondary transition-colors">RV Repair</a>
+            <a href="fiberglass-repair.html" class="text-lg text-white/90 mobile-link hover:text-secondary transition-colors">Boat & RV Fiberglass</a>
+            <a href="rv-inspection.html" class="text-lg text-white/90 mobile-link hover:text-secondary transition-colors">RV Inspection</a>
+            <a href="rv-renovation.html" class="text-lg text-white/90 mobile-link hover:text-secondary transition-colors">Interior Renovation</a>
+            
+            <a href="pay.html" class="text-2xl font-display font-bold text-white mobile-link mt-4 hover:text-secondary transition-colors">Pay Now</a>
+            <a href="blog.html" class="text-2xl font-display font-bold text-white mobile-link hover:text-secondary transition-colors">Blog</a>
+            <a href="quote.html" class="btn-solid px-10 py-4 mt-6 text-sm font-bold uppercase tracking-widest rounded-sm mobile-link">Get A Quote</a>
+        </div>
+    </header>
+
+    <section class="relative h-screen w-full flex items-center overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/c332fc8c-8763-4ad4-9a0d-bd9dcd16c2be.jpg.bv.webp" class="w-full h-full object-cover transform scale-110" alt="Hero Background">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-primary/60 to-transparent mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent"></div>
+        </div>
+        
+        <div class="w-full px-6 md:px-12 xl:px-24 relative z-10 text-white flex flex-col justify-center">
+            <div class="max-w-5xl" data-aos="fade-up" data-aos-duration="1200">
+                <div class="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/30 px-5 py-2 rounded-full mb-8 shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    <span class="text-xs font-bold tracking-[0.2em] uppercase text-white">Colorado's #1 Fiberglass Experts</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-[6.5rem] font-display font-bold leading-[0.95] tracking-tight mb-8 drop-shadow-lg">
+                    REDEFINING <span class="text-secondary">QUALITY</span> <br> ON WATER & ROAD.
+                </h1>
+                <p class="text-lg md:text-xl font-medium text-gray-100 max-w-2xl mb-12 border-l-4 border-secondary pl-6 drop-shadow-md">
+                    Delivering immaculate RV detailing, impenetrable marine fiberglass restoration, and bespoke interior renovations. Precision engineered for your next adventure.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <a href="quote.html" class="btn-solid px-10 py-4 font-bold tracking-widest uppercase text-sm w-full sm:w-auto text-center rounded-sm">Request Estimate</a>
+                    <a href="#services" class="text-white hover:text-secondary transition-all duration-300 flex items-center gap-3 uppercase tracking-widest text-sm font-bold group">
+                        <i class="fa-solid fa-play w-10 h-10 rounded-full border-2 border-white/40 flex items-center justify-center group-hover:border-secondary transition-all text-xs"></i> 
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="w-full bg-offwhite pt-24 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="flex flex-col lg:flex-row w-full items-center">
+            <div class="w-full lg:w-1/2 px-6 md:px-12 xl:px-24 pb-16 lg:pb-0" data-aos="fade-right" data-aos-duration="1000">
+                <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">The AK Difference</span>
+                <h2 class="text-4xl md:text-6xl font-display font-extrabold text-primary mb-8 leading-[1.1] tracking-tight">Masterful RV & <br> Marine Services</h2>
+                <p class="text-lg text-gray-700 mb-6 leading-relaxed font-medium">
+                    At AK Fiberglass Works, we prioritize the integrity and aesthetics of your RV and boat. Our skilled professionals are adept at comprehensive roof services, structural fiberglass repairs, and complete aesthetic overhauls. 
+                </p>
+                <p class="text-lg text-gray-700 mb-10 leading-relaxed font-medium">
+                    Experience the transformative power of high-end service. From precision detailing to fully custom camper fabrications, we ensure your vehicles are immaculate.
+                </p>
+                <a href="about.html" class="btn-solid inline-block px-8 py-3.5 font-bold tracking-widest uppercase text-xs rounded-sm">Learn More About Us</a>
+            </div>
+            
+            <div class="w-full lg:w-1/2 h-[60vh] edge-image-container relative shadow-2xl" data-aos="fade-left" data-aos-duration="1000">
+                <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/04/01.png.bv.webp?bv_host=akfiberglassworks.com" alt="About AK Fiberglass" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 left-0 bg-primary text-white p-10 max-w-md hidden sm:block border-l-4 border-secondary shadow-[10px_-10px_30px_rgba(0,0,0,0.1)]">
+                    <h3 class="font-display text-2xl font-bold mb-3">We Come To You.</h3>
+                    <p class="text-sm text-gray-100 font-medium leading-relaxed">Putting time back into our clients' busy lives across the entire state of Colorado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-light py-24 border-t border-gray-100 relative">
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+        <div class="px-6 md:px-12 xl:px-24">
+            <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-display font-extrabold text-primary mb-6">Uncompromising Quality Standard</h2>
+                <p class="text-gray-600 text-lg font-medium">Customers trust us for repairs because we're reliable, fully certified, and incredibly meticulous. Discover the benefits of superior fiberglass craftsmanship.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-offwhite rounded-2xl flex items-center justify-center text-secondary text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:-translate-y-2 transition-all duration-300 shadow-sm border border-gray-100">
+                        <i class="fa-solid fa-shapes"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-primary mb-3">Highly Adaptable</h4>
+                    <p class="text-gray-500 font-medium text-sm">Fiberglass can be flawlessly molded into various shapes, ideal for complex automotive parts and marine hulls.</p>
+                </div>
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-offwhite rounded-2xl flex items-center justify-center text-secondary text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:-translate-y-2 transition-all duration-300 shadow-sm border border-gray-100">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-primary mb-3">Corrosion Resistant</h4>
+                    <p class="text-gray-500 font-medium text-sm">Completely resistant to rust and corrosion, making it perfect for highly demanding outdoor and marine environments.</p>
+                </div>
+                <div class="group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-offwhite rounded-2xl flex items-center justify-center text-secondary text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:-translate-y-2 transition-all duration-300 shadow-sm border border-gray-100">
+                        <i class="fa-solid fa-temperature-half"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-primary mb-3">Thermal Insulation</h4>
+                    <p class="text-gray-500 font-medium text-sm">Provides excellent insulation properties, maintaining consistent temperatures and reducing energy costs in your RV.</p>
+                </div>
+                <div class="group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-offwhite rounded-2xl flex items-center justify-center text-secondary text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:-translate-y-2 transition-all duration-300 shadow-sm border border-gray-100">
+                        <i class="fa-solid fa-tools"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-primary mb-3">Low Maintenance</h4>
+                    <p class="text-gray-500 font-medium text-sm">Minimal maintenance requirements save extensive time and money over their lifespan compared to wood or metal.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="quote.html" class="btn-solid inline-block px-10 py-4 font-bold tracking-widest uppercase text-xs rounded-sm">Experience The Standard</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="w-full bg-dark text-white py-24 border-t-4 border-secondary">
+        <div class="px-6 md:px-12 xl:px-24 mb-16 flex flex-col md:flex-row justify-between items-end gap-8" data-aos="fade-up">
+            <div class="max-w-3xl">
+                <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">Our Expertise</span>
+                <h2 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6">Comprehensive Solutions</h2>
+                <p class="text-gray-300 font-medium text-lg">A full spectrum of specialized services engineered for maximum durability, structural integrity, and aesthetic perfection.</p>
+            </div>
+            <a href="services.html" class="btn-outline shrink-0 px-8 py-3.5 font-bold tracking-widest uppercase text-xs rounded-sm mb-2">View All Services</a>
+        </div>
+
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-white/10">
+            
+            <a href="rv-detailing.html" class="group relative h-[450px] border-b lg:border-b-0 lg:border-r border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/04/Downloader.la-660b33dc6a578-768x512.jpg.bv.webp" class="w-full h-full object-cover" alt="RV Detailing Services">
+                    <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-3 block opacity-90 drop-shadow-md">01</span>
+                    <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">RV Detailing Services</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 h-0 group-hover:h-auto font-medium">Deep cleaning, meticulous polishing, and total aesthetic revitalization for your RV.</p>
+                </div>
+            </a>
+
+            <a href="rv-roofing.html" class="group relative h-[450px] border-b lg:border-b-0 lg:border-r border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/04/Downloader.la-660b34328d2a7-768x506.jpg.bv.webp" class="w-full h-full object-cover" alt="RV Roofing Services">
+                    <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-3 block opacity-90 drop-shadow-md">02</span>
+                    <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">RV Roofing Services</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 h-0 group-hover:h-auto font-medium">Protect your vehicle from leaks and structural damage with lasting restoration.</p>
+                </div>
+            </a>
+
+            <a href="boat-detailing.html" class="group relative h-[450px] border-b lg:border-b-0 lg:border-r border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/04/Downloader.la-660b351f27df5-768x512.jpg.bv.webp" class="w-full h-full object-cover" alt="Boat Detailing Packages">
+                    <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-3 block opacity-90 drop-shadow-md">03</span>
+                    <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">Boat Detailing Packages</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 h-0 group-hover:h-auto font-medium">Customized marine detailing to maintain pristine appearance and hydrodynamic efficiency.</p>
+                </div>
+            </a>
+
+            <a href="rv-repair.html" class="group relative h-[450px] border-b lg:border-b-0 border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/img_2_5-768x576.jpg.bv.webp" class="w-full h-full object-cover" alt="RV Service and Repair">
+                    <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-3 block opacity-90 drop-shadow-md">04</span>
+                    <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">RV Service and Repair</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 h-0 group-hover:h-auto font-medium">Reliable mechanics and aesthetics repairs to confidently keep your adventure rolling.</p>
+                </div>
+            </a>
+            
+            <a href="fiberglass-repair.html" class="col-span-1 md:col-span-2 group relative h-[400px] border-t border-r border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/07/unnamed-14-768x831.jpg.bv.webp" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" alt="Fiberglass Repair">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-primary/40 to-transparent"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-2 block opacity-90 drop-shadow-md">05</span>
+                    <h3 class="text-3xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">Boat and RV Fiberglass Repair Services</h3>
+                    <p class="text-gray-200 font-medium max-w-md text-sm">Specialized, meticulous repair services returning your damaged vessel or RV to showroom glory and ensuring lasting durability on the water.</p>
+                </div>
+            </a>
+
+            <a href="rv-inspection.html" class="col-span-1 group relative h-[400px] border-t border-r border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/IMG_20150623_115920948_HDR-768x432.jpg.bv.webp" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" alt="RV Inspection">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-primary/40 to-transparent"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-2 block opacity-90 drop-shadow-md">06</span>
+                    <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">RV Inspection Services</h3>
+                    <p class="text-gray-200 font-medium text-sm">Thorough safety assessments identifying potential issues for worry-free travels.</p>
+                </div>
+            </a>
+
+            <a href="rv-renovation.html" class="col-span-1 group relative h-[400px] border-t border-white/10 overflow-hidden flex flex-col justify-end p-8">
+                <div class="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-700">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/Tonke-Woodline-truck-camper-features-hydraulic-system-to-detach-living-unit-from-truck-bed_9-768x512.jpg.bv.webp" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" alt="RV Interior Renovation">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-primary/40 to-transparent"></div>
+                </div>
+                <div class="relative z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <span class="text-secondary font-display text-xl font-bold mb-2 block opacity-90 drop-shadow-md">07</span>
+                    <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">RV Interior Renovations</h3>
+                    <p class="text-gray-200 font-medium text-sm">Complete fixture updates and custom layout redesigns for ultimate travel comfort.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="gallery" class="w-full bg-light py-24 overflow-hidden">
+        <div class="px-6 md:px-12 xl:px-24 mb-16 flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-up">
+            <div>
+                <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">Portfolio</span>
+                <h2 class="text-4xl md:text-6xl font-display font-extrabold text-primary tracking-tight">Project Gallery</h2>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="gallery.html" class="font-bold tracking-widest uppercase text-xs text-primary hover:text-secondary transition-colors underline underline-offset-4 mr-4 hidden md:block">View Full Gallery</a>
+                <div class="flex gap-4">
+                    <button class="gallery-prev w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-primary shadow-sm hover:shadow-md"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="gallery-next w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-primary shadow-sm hover:shadow-md"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper fullGallerySwiper w-full pl-6 md:pl-12 xl:pl-24" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper mb-4">
+                <div class="swiper-slide cursor-grab h-[50vh]"><img src="https://akfiberglassworks.com/wp-content/uploads/2024/07/unnamed-13-400x225.jpg" alt="Gallery Work" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-100"></div>
+                <div class="swiper-slide cursor-grab h-[50vh]"><img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/59283578-4ca2-41dc-9ea0-bbb3a45d5c5d-400x300.jpg.bv.webp" alt="Gallery Work" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-100"></div>
+                <div class="swiper-slide cursor-grab h-[50vh]"><img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/26771e99-defa-41f3-ba86-70c8656d76db-400x300.jpg.bv.webp" alt="Gallery Work" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-100"></div>
+                <div class="swiper-slide cursor-grab h-[50vh]"><img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/128802d7-2488-4684-ad3e-ed1ba4cf3378-400x300.jpg.bv.webp" alt="Gallery Work" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-100"></div>
+                <div class="swiper-slide cursor-grab h-[50vh]"><img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/29f03f44-50e7-45f2-bf02-80de334e621f-1-400x300.jpg.bv.webp" alt="Gallery Work" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-100"></div>
+            </div>
+        </div>
+        
+        <div class="mt-10 px-6 text-center md:hidden">
+            <a href="gallery.html" class="btn-solid inline-block px-8 py-3.5 font-bold tracking-widest uppercase text-xs rounded-sm w-full">View Full Gallery</a>
+        </div>
+    </section>
+
+    <section class="w-full bg-offwhite pt-24 pb-12 overflow-hidden relative">
+        <div class="absolute top-10 left-10 text-[200px] text-primary/5 -z-10 font-serif leading-none">"</div>
+        <div class="px-6 md:px-12 xl:px-24">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <i class="fa-solid fa-quote-right text-5xl text-secondary mb-6"></i>
+                <h2 class="text-4xl md:text-5xl font-display font-extrabold text-primary mb-6">Client Experiences</h2>
+                <p class="text-gray-600 font-medium">With over 5-star ratings across the board, our clients' stories reflect our unwavering commitment to impeccable service and timely deliveries.</p>
+            </div>
+            
+            <div class="swiper reviewsSwiper w-full pb-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-white p-10 rounded-2xl shadow-md border border-gray-100 flex flex-col h-auto">
+                        <div class="flex text-yellow-400 text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 font-medium text-[15px] mb-8 italic leading-relaxed flex-grow">"AK Fiberglass Works did an excellent job in restoring my jet ski at a much more affordable price than expected. The repair quality was impressive. Highly recommend!"</p>
+                        <h5 class="font-display font-bold text-primary text-lg border-t border-gray-100 pt-4">- Estela Chavez</h5>
+                    </div>
+                    
+                    <div class="swiper-slide bg-white p-10 rounded-2xl shadow-md border border-gray-100 flex flex-col h-auto">
+                        <div class="flex text-yellow-400 text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 font-medium text-[15px] mb-8 italic leading-relaxed flex-grow">"The team did an excellent job on the Mercedes motorhome. Their teamwork is outstanding. The fiberglass looks as good as new. Highly impressed with the quality of work."</p>
+                        <h5 class="font-display font-bold text-primary text-lg border-t border-gray-100 pt-4">- Bill Rader</h5>
+                    </div>
+                    
+                    <div class="swiper-slide bg-white p-10 rounded-2xl shadow-md border border-gray-100 flex flex-col h-auto">
+                        <div class="flex text-yellow-400 text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 font-medium text-[15px] mb-8 italic leading-relaxed flex-grow">"I recently had the fiberglass roof cover repaired and painted, and the quality of work was excellent! The craftsmanship and attention to detail exceeded my expectations."</p>
+                        <h5 class="font-display font-bold text-primary text-lg border-t border-gray-100 pt-4">- Jhon</h5>
+                    </div>
+
+                    <div class="swiper-slide bg-white p-10 rounded-2xl shadow-md border border-gray-100 flex flex-col h-auto">
+                        <div class="flex text-yellow-400 text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 font-medium text-[15px] mb-8 italic leading-relaxed flex-grow">"Incredible turnaround time and flawless execution. They detailed my 40ft boat and corrected decades of fiberglass wear. It looks like it just rolled out of the showroom."</p>
+                        <h5 class="font-display font-bold text-primary text-lg border-t border-gray-100 pt-4">- Marcus T.</h5>
+                    </div>
+
+                    <div class="swiper-slide bg-white p-10 rounded-2xl shadow-md border border-gray-100 flex flex-col h-auto">
+                        <div class="flex text-yellow-400 text-sm mb-4 gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 font-medium text-[15px] mb-8 italic leading-relaxed flex-grow">"Very professional crew. They came straight to our storage facility to patch a large crack on the RV cap. Extremely convenient and reasonably priced for the level of service."</p>
+                        <h5 class="font-display font-bold text-primary text-lg border-t border-gray-100 pt-4">- Sarah Jenkins</h5>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-8 relative"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-light py-20 border-t border-gray-200" id="faq">
+        <div class="px-6 md:px-12 xl:px-24">
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="text-center mb-16">
+                    <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">Got Questions?</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-extrabold text-primary mb-6">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">Do you offer mobile RV & Marine services?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Yes! We understand the hassle of transporting a large RV or vessel. AK Fiberglass Works offers highly convenient mobile services, coming directly to your home, storage facility, or marina across Colorado to perform our world-class repairs and detailing.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">What kind of RV roofs do you repair or restore?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Our skilled professionals are certified and equipped to handle all major RV roof types including TPO, EPDM (Rubber), Fiberglass, and Aluminum. From sealing minor leaks to complete structural replacements, we ensure impenetrable protection.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">How long does fiberglass repair usually take?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Turnaround time heavily depends on the extent of the damage. Minor gelcoat repairs or surface patches can often be completed in a single day. Larger structural reconstructions or full cap restorations may take a few weeks to ensure our uncompromising quality standards are met.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">Do you work directly with insurance companies?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Absolutely. We frequently coordinate directly with major insurance providers for collision damage, storm/hail damage, and structural roof claims, providing detailed estimates and documentation to make the process as seamless as possible for you.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">What does your RV interior renovation entail?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Our bespoke interior renovations range from targeted updates—like replacing flooring, cabinetry, or upholstery—to fully custom layout overhauls designed for your specific lifestyle and comfort on the road.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-light py-20 border-t border-gray-200">
+        <div class="px-6 md:px-12 xl:px-24">
+            <div class="max-w-6xl mx-auto bg-primary rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row relative" data-aos="fade-up">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl translate-x-1/3 -translate-y-1/3 z-0"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary/20 rounded-full blur-2xl -translate-x-1/3 translate-y-1/3 z-0"></div>
+                
+                <div class="w-full lg:w-5/12 p-12 lg:p-16 flex flex-col justify-center relative z-10 text-white border-b lg:border-b-0 lg:border-r border-white/10">
+                    <h3 class="text-3xl md:text-4xl font-display font-bold mb-4">Share Your Experience</h3>
+                    <p class="text-white/80 font-medium mb-8 leading-relaxed">Your feedback helps us continue providing the ultra-premium service that the Colorado RV and marine community has come to expect.</p>
+                    <div class="flex text-yellow-400 text-2xl mb-8 gap-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-white/60 font-semibold tracking-widest uppercase">We appreciate your business!</p>
+                </div>
+                
+                <div class="w-full lg:w-7/12 p-12 lg:p-16 relative z-10 bg-white">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all bg-offwhite" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all bg-offwhite" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all bg-offwhite" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Rate Your Experience *</label>
+                            <div class="flex gap-2 text-3xl text-gray-300 star-rating" id="reviewStars">
+                                <i class="fa-solid fa-star" data-rating="1"></i>
+                                <i class="fa-solid fa-star" data-rating="2"></i>
+                                <i class="fa-solid fa-star" data-rating="3"></i>
+                                <i class="fa-solid fa-star" data-rating="4"></i>
+                                <i class="fa-solid fa-star" data-rating="5"></i>
+                            </div>
+                            <input type="hidden" name="rating" id="selectedRating" required value="">
+                            <p class="text-xs text-red-500 mt-1 hidden" id="ratingError">Please select a star rating.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Your Review *</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all bg-offwhite resize-none" required></textarea>
+                        </div>
+                        <button type="submit" onclick="validateRating(event)" class="btn-solid w-full py-4 font-bold tracking-widest uppercase text-sm rounded-lg shadow-lg">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-skylights w-full pt-32 flex flex-col text-white">
+        
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+
+        <div class="flex-grow flex flex-col w-full px-6 md:px-12 xl:px-24 mb-10 relative z-10">
+            <div class="w-full mb-20 flex flex-col items-start" data-aos="fade-up">
+                <p class="text-secondary font-bold tracking-widest uppercase text-sm mb-6 flex items-center gap-3">
+                    <span class="w-8 h-[2px] bg-secondary"></span> Ready to upgrade your vessel?
+                </p>
+                <h2 class="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[1.1] tracking-tight hover:text-primary transition-colors duration-500 cursor-default">
+                    LET'S BUILD <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-blue-400">TOGETHER.</span>
+                </h2>
+            </div>
+
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pt-16 border-t border-white/10">
+                
+                <div class="w-full lg:col-span-4 max-w-sm">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/02/463201f8-84dd-4647-ba07-5ea46d588763.png.bv.webp?bv_host=akfiberglassworks.com" alt="AK Fiberglass Works" class="w-48 h-auto mb-6 logo-white">
+                    <p class="font-light text-[15px] text-gray-400 leading-relaxed mb-8">
+                        Welcome to AK Fiberglass Works, Colorado's leading professional RV detailing company, where exceptional quality services meet your every need.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/18ZYCAqYwn/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:border-transparent transition-all duration-300 group"><i class="fa-brands fa-facebook-f text-white text-sm group-hover:scale-110 transition-transform"></i></a>
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:border-transparent transition-all duration-300 group"><i class="fa-brands fa-instagram text-white text-sm group-hover:scale-110 transition-transform"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF0000] hover:border-transparent transition-all duration-300 group"><i class="fa-brands fa-youtube text-white text-sm group-hover:scale-110 transition-transform"></i></a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:col-span-3 lg:col-start-6">
+                    <h4 class="text-sm font-bold mb-6 font-display tracking-widest uppercase text-white">Services</h4>
+                    <ul class="space-y-4 font-light text-[15px] text-gray-400">
+                        <li><a href="rv-detailing.html" class="footer-link-hover">RV Detailing Services</a></li>
+                        <li><a href="rv-roofing.html" class="footer-link-hover">RV Roofing Services</a></li>
+                        <li><a href="boat-detailing.html" class="footer-link-hover">Boat Detailing Packages</a></li>
+                        <li><a href="rv-repair.html" class="footer-link-hover">RV Service and Repair</a></li>
+                        <li><a href="fiberglass-repair.html" class="footer-link-hover">Boat & RV Fiberglass</a></li>
+                        <li><a href="rv-inspection.html" class="footer-link-hover">RV Inspection</a></li>
+                        <li><a href="rv-renovation.html" class="footer-link-hover">RV Interior Renovations</a></li>
+                    </ul>
+                </div>
+
+                <div class="w-full lg:col-span-4">
+                    <h4 class="text-sm font-bold mb-6 font-display tracking-widest uppercase text-white">Contact & Location</h4>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <a href="mailto:akfiberglassworks@gmail.com" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3">
+                                <i class="fa-regular fa-envelope text-secondary"></i> akfiberglassworks@gmail.com
+                            </a>
+                        </div>
+                        
+                        <div class="flex flex-col space-y-3">
+                            <a href="tel:+17207327044" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3 w-max">
+                                <i class="fa-solid fa-phone text-secondary"></i> +1 720 732 7044
+                            </a>
+                            <a href="tel:+19709095343" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3 w-max">
+                                <i class="fa-solid fa-phone text-secondary opacity-0"></i> +1 970 909 5343
+                            </a>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-[15px] font-light text-gray-400 mt-2">
+                            <i class="fa-solid fa-location-dot text-secondary mt-1"></i>
+                            <p>300 E 16th St Unit# 209,<br>Greeley, CO 80631, USA</p>
+                        </div>
+
+                        <div class="pt-2">
+                            <p class="text-sm text-white/50 mb-2 uppercase tracking-widest font-semibold">Business Hours</p>
+                            <div class="text-[14px] font-light text-gray-400 space-y-1">
+                                <p>Mon - Fri : 8:00 AM - 5:00 PM</p>
+                                <p>Sat : 9:00 AM - 4:00 PM | Sun : Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-full px-6 md:px-12 xl:px-24 py-8 border-t border-white/10 relative z-10 flex flex-col md:flex-row justify-between items-center text-[13px] text-gray-500 font-medium mt-auto bg-dark/30">
+            <p>&copy; 2026 AK Fiberglass Works. All Rights Reserved.</p>
+            <p class="mt-4 md:mt-0 uppercase tracking-widest font-bold text-white/30">
+                Prototype by <a href="https://www.skyloftdigital.com" target="_blank" class="text-secondary hover:text-white transition-colors underline underline-offset-4">Skyloft Digital</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Init AOS (Animate On Scroll)
+        AOS.init({ duration: 900, once: true, offset: 50, easing: 'ease-out-cubic' });
+
+        // Gallery Swiper Settings
+        const fullGallerySwiper = new Swiper('.fullGallerySwiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            loop: true,
+            grabCursor: true,
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            navigation: { nextEl: '.gallery-next', prevEl: '.gallery-prev' },
+            breakpoints: {
+                640: { slidesPerView: 2.2, spaceBetween: 20 },
+                1024: { slidesPerView: 3.2, spaceBetween: 30 },
+                1536: { slidesPerView: 4.2, spaceBetween: 40 },
+            }
+        });
+
+        // Reviews Swiper Setting for Smooth Horizontal Scrolling
+        const reviewsSwiper = new Swiper('.reviewsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            grabCursor: true,
+            speed: 800,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: { slidesPerView: 2, spaceBetween: 30 },
+                1024: { slidesPerView: 3, spaceBetween: 40 },
+            }
+        });
+
+        // Glassmorphism Header Scroll Logic
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 80) {
+                header.classList.add('header-scrolled');
+                header.classList.remove('bg-transparent', 'pt-8');
+            } else {
+                header.classList.remove('header-scrolled');
+                header.classList.add('bg-transparent', 'pt-8');
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isClosed = mobileMenu.classList.contains('opacity-0');
+            if (isClosed) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // FAQ Toggle Logic
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            
+            // Close others
+            allItems.forEach(i => {
+                if(i !== item) i.classList.remove('active');
+            });
+            
+            // Toggle clicked
+            item.classList.toggle('active');
+        }
+
+        // Star Rating Logic
+        const stars = document.querySelectorAll('#reviewStars i');
+        const ratingInput = document.getElementById('selectedRating');
+        
+        stars.forEach(star => {
+            // Hover effect
+            star.addEventListener('mouseover', function() {
+                const value = this.getAttribute('data-rating');
+                stars.forEach(s => {
+                    if (s.getAttribute('data-rating') <= value) {
+                        s.classList.add('hover-active');
+                    } else {
+                        s.classList.remove('hover-active');
+                    }
+                });
+            });
+            
+            // Clear hover effect
+            star.addEventListener('mouseout', function() {
+                stars.forEach(s => s.classList.remove('hover-active'));
+            });
+
+            // Click selection
+            star.addEventListener('click', function() {
+                const value = this.getAttribute('data-rating');
+                ratingInput.value = value;
+                document.getElementById('ratingError').classList.add('hidden');
+                
+                stars.forEach(s => {
+                    if (s.getAttribute('data-rating') <= value) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Form Validation for Rating
+        function validateRating(e) {
+            if (!ratingInput.value) {
+                e.preventDefault();
+                document.getElementById('ratingError').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
