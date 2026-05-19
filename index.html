@@ -19,11 +19,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1e40af', /* Professional, bright but solid blue */
-                        secondary: '#38bdf8', /* Light, bright, pleasant sky blue */
+                        primary: '#1e40af', 
+                        secondary: '#38bdf8', 
                         dark: '#0f172a',
                         light: '#ffffff',
-                        offwhite: '#f8fafc' /* Clean, light grayish white */
+                        offwhite: '#f8fafc' 
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -38,21 +38,8 @@
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #333; }
         h1, h2, h3, h4, h5, h6, .font-display { font-family: 'Syne', sans-serif; }
         
-        /* Make logo pure white so it stands out */
         .logo-white { filter: brightness(0) invert(1); }
         
-        /* Dynamic Header - UPDATED to Glassmorphism */
-        #mainHeader { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .header-scrolled {
-            background: rgba(15, 23, 42, 0.35); /* Pure Glass Effect */
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
         /* Hover Underline & Dropdown Logic */
         .nav-link { position: relative; padding-bottom: 4px; display: inline-flex; align-items: center; gap: 4px; }
         .nav-link::after {
@@ -62,7 +49,6 @@
         }
         .nav-link:hover::after, .group:hover .nav-link::after { width: 100%; }
 
-        /* Ultra-Smooth Dropdown */
         .dropdown-menu {
             opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.95);
             transform-origin: top;
@@ -70,7 +56,6 @@
         }
         .group:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 
-        /* Edge-to-Edge Image Hover */
         .edge-image-container { overflow: hidden; position: relative; }
         .edge-image-container img {
             transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), filter 1s ease;
@@ -78,7 +63,6 @@
         }
         .edge-image-container:hover img { transform: scale(1.08); filter: grayscale(0%) brightness(1.05); }
 
-        /* Custom CTA Buttons */
         .btn-outline {
             position: relative; overflow: hidden; z-index: 1;
             border: 2px solid rgba(255,255,255,0.4);
@@ -97,29 +81,25 @@
         }
         .btn-solid:hover { background-color: #0284c7; transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4); color: #fff; }
 
-        /* Review Swiper Smooth Scroll */
         .swiper-wrapper {
             transition-timing-function: linear !important; 
         }
 
-        /* Improved Footer Skylights.tech inspired styling */
         .footer-skylights {
             background-color: #0f172a;
             position: relative;
-            /* UPDATED: Cover whole screen */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
-            /* Motion Graphics Gradient */
-            background: linear-gradient(-45deg, #0f172a, #0b1a40, #0a2558, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            /* Updated Vibrant Moving Gradient */
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #38bdf8 100%, #0f172a 150%);
+            background-size: 300% 300%;
+            animation: vibrantGradientBG 12s ease infinite;
         }
 
-        /* Footer Motion Graphics Animations */
-        @keyframes gradientBG {
+        @keyframes vibrantGradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -134,7 +114,6 @@
             z-index: 2;
         }
 
-        /* Ambient floating orbs in footer */
         .ambient-orb {
             position: absolute;
             border-radius: 50%;
@@ -143,8 +122,8 @@
             animation: floatOrb 20s infinite ease-in-out alternate;
             z-index: 0;
         }
-        .orb-1 { width: 400px; height: 400px; background: rgba(56, 189, 248, 0.15); top: -100px; left: -100px; animation-delay: 0s; }
-        .orb-2 { width: 500px; height: 500px; background: rgba(30, 64, 175, 0.2); bottom: -200px; right: -100px; animation-delay: -5s; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(56, 189, 248, 0.2); top: -100px; left: -100px; animation-delay: 0s; }
+        .orb-2 { width: 500px; height: 500px; background: rgba(30, 64, 175, 0.3); bottom: -200px; right: -100px; animation-delay: -5s; }
         
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
@@ -155,7 +134,7 @@
         .footer-link-hover {
             position: relative;
             display: inline-block;
-            color: #94a3b8; /* slate-400 */
+            color: #e2e8f0; 
             z-index: 10;
         }
         .footer-link-hover::after {
@@ -169,7 +148,6 @@
         .footer-link-hover:hover { color: #ffffff; }
         .footer-link-hover:hover::after { width: 100%; }
 
-        /* FAQ Accordion Styling */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -184,59 +162,56 @@
             color: #38bdf8;
         }
         
-        /* Star Rating Hover Effect */
         .star-rating i { cursor: pointer; transition: color 0.2s, transform 0.2s; }
         .star-rating i:hover { transform: scale(1.1); }
-        .star-rating i.active, .star-rating i.hover-active { color: #fbbf24; /* yellow-400 */ }
+        .star-rating i.active, .star-rating i.hover-active { color: #fbbf24; }
     </style>
 </head>
-<body class="bg-light antialiased selection:bg-secondary selection:text-white">
+<body class="bg-light antialiased selection:bg-secondary selection:text-white relative">
 
-    <header class="fixed top-0 w-full z-50 pt-8 pb-4 px-6 md:px-12 xl:px-24 transition-all duration-500 bg-transparent text-white border-b border-transparent" id="mainHeader">
-        <div class="flex items-center justify-between w-full">
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-secondary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 z-50 hover:bg-primary hover:-translate-y-1" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+    </button>
+
+    <header class="absolute top-0 w-full z-50 pt-8 pb-4 px-6 md:px-12 xl:px-24 bg-transparent text-white border-b border-transparent" id="mainHeader">
+        <div class="flex items-center justify-between w-full relative">
             
-            <a href="index.html" class="shrink-0 z-50 group mr-auto">
-                <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/02/463201f8-84dd-4647-ba07-5ea46d588763.png.bv.webp?bv_host=akfiberglassworks.com" alt="AK Fiberglass Works" class="h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 logo-white">
-            </a>
+            <div class="w-1/3 flex justify-start">
+                <a href="index.html" class="shrink-0 z-50 group">
+                    <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/02/463201f8-84dd-4647-ba07-5ea46d588763.png.bv.webp?bv_host=akfiberglassworks.com" alt="AK Fiberglass Works" class="h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 logo-white">
+                </a>
+            </div>
             
-            <div class="flex items-center ml-auto gap-8">
-                <nav class="hidden lg:flex space-x-8 items-center text-[13px] font-semibold tracking-[0.15em] uppercase">
+            <div class="w-1/3 hidden lg:flex justify-center">
+                <nav class="flex space-x-8 items-center text-[12px] font-bold tracking-[0.15em] uppercase bg-white/10 backdrop-blur-xl border border-white/20 px-8 py-3.5 rounded-full shadow-xl">
                     <a href="about.html" class="nav-link text-white hover:text-secondary transition-colors">About Us</a>
                     
-                    <div class="group relative py-4">
+                    <div class="group relative">
                         <button class="nav-link text-white hover:text-secondary transition-colors uppercase outline-none">
-                            RV / Boat Services <i class="fa-solid fa-angle-down ml-1 text-[10px]"></i>
+                            Services <i class="fa-solid fa-angle-down ml-1 text-[10px]"></i>
                         </button>
-                        <div class="dropdown-menu absolute top-[100%] left-0 w-64 bg-primary/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-sm py-2">
+                        <div class="dropdown-menu absolute top-[200%] left-1/2 -translate-x-1/2 w-[300px] bg-primary/60 backdrop-blur-xl border border-white/10 shadow-2xl rounded-sm py-2">
                             <a href="rv-detailing.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Detailing Services</a>
                             <a href="rv-roofing.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Roofing Services</a>
-                        </div>
-                    </div>
-
-                    <div class="group relative py-4">
-                        <button class="nav-link text-white hover:text-secondary transition-colors uppercase outline-none">
-                            Repair Services <i class="fa-solid fa-angle-down ml-1 text-[10px]"></i>
-                        </button>
-                        <div class="dropdown-menu absolute top-[100%] left-0 w-[300px] bg-primary/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-sm py-2">
                             <a href="rv-repair.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Repair Services</a>
-                            <a href="fiberglass-repair.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">Boat & RV Fiberglass Repair Services</a>
-                            <a href="rv-inspection.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Inspection Services</a>
-                            <a href="rv-renovation.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Interior Renovation Services</a>
+                            <a href="fiberglass-repair.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">Fiberglass Repair</a>
+                            <a href="rv-inspection.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">RV Inspection</a>
+                            <a href="rv-renovation.html" class="block px-6 py-3 text-white/90 hover:text-secondary hover:bg-white/10 transition-all text-xs font-bold">Interior Renovation</a>
                         </div>
                     </div>
 
                     <a href="pay.html" class="nav-link text-white hover:text-secondary transition-colors">Pay Now</a>
                     <a href="blog.html" class="nav-link text-white hover:text-secondary transition-colors">Blog</a>
                 </nav>
-                
-                <div class="hidden lg:block shrink-0">
-                    <a href="quote.html" class="btn-outline text-white px-8 py-3.5 text-[13px] font-bold tracking-[0.15em] uppercase rounded-sm">
-                        Get A Quote
-                    </a>
-                </div>
+            </div>
+            
+            <div class="w-1/3 hidden lg:flex justify-end shrink-0 z-50">
+                <a href="quote.html" class="btn-outline text-white px-8 py-3.5 text-[13px] font-bold tracking-[0.15em] uppercase rounded-full bg-white/5 backdrop-blur-md">
+                    Get A Quote
+                </a>
             </div>
 
-            <button class="lg:hidden text-white text-2xl z-50 focus:outline-none hover:text-secondary transition-colors ml-6" id="mobileMenuBtn">
+            <button class="lg:hidden text-white text-2xl z-50 focus:outline-none hover:text-secondary transition-colors ml-auto" id="mobileMenuBtn">
                 <i class="fa-solid fa-bars transition-all duration-300" id="menuIcon"></i>
             </button>
         </div>
@@ -355,6 +330,32 @@
             
             <div class="text-center mt-16" data-aos="fade-up">
                 <a href="quote.html" class="btn-solid inline-block px-10 py-4 font-bold tracking-widest uppercase text-xs rounded-sm">Experience The Standard</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-[#0b1329] py-24 relative border-t-2 border-secondary/20" id="expertise">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
+        <div class="px-6 md:px-12 xl:px-24 relative z-10">
+            <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">Action Gallery</span>
+                <h2 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6">See Our Craftsmanship</h2>
+                <p class="text-gray-400 text-lg font-medium">Watch our expert team in action, delivering ultra-premium RV and marine restorations with precision.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group" data-aos="fade-up" data-aos-delay="100">
+                    <video src="https://akfiberglassworks.com/wp-content/uploads/2024/07/IMG_1040.mov" autoplay loop muted playsinline class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group" data-aos="fade-up" data-aos-delay="200">
+                    <video src="https://akfiberglassworks.com/wp-content/uploads/2024/07/IMG_1046.mov" autoplay loop muted playsinline class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group" data-aos="fade-up" data-aos-delay="300">
+                    <video src="https://akfiberglassworks.com/wp-content/uploads/2024/07/IMG_1039.mov" autoplay loop muted playsinline class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -554,51 +555,81 @@
                 <div class="space-y-4">
                     <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
                         <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-display font-bold text-primary text-lg">Do you offer mobile RV & Marine services?</span>
+                            <span class="font-display font-bold text-primary text-lg">What types of fiberglass repair services do you offer?</span>
                             <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
-                            Yes! We understand the hassle of transporting a large RV or vessel. AK Fiberglass Works offers highly convenient mobile services, coming directly to your home, storage facility, or marina across Colorado to perform our world-class repairs and detailing.
+                            We specialize in repairing a variety of fiberglass surfaces, including boats, pools, RVs, and more. Whether it's cracks, chips, or other damages, our experienced technicians can restore your fiberglass to its original condition.
                         </div>
                     </div>
 
                     <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
                         <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-display font-bold text-primary text-lg">What kind of RV roofs do you repair or restore?</span>
+                            <span class="font-display font-bold text-primary text-lg">How do I know if my fiberglass surface can be repaired?</span>
                             <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
-                            Our skilled professionals are certified and equipped to handle all major RV roof types including TPO, EPDM (Rubber), Fiberglass, and Aluminum. From sealing minor leaks to complete structural replacements, we ensure impenetrable protection.
+                            We offer free consultations where our expert technicians can assess the damage and determine the best course of action. In most cases, we can repair minor to moderate damage effectively.
                         </div>
                     </div>
 
                     <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
                         <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-display font-bold text-primary text-lg">How long does fiberglass repair usually take?</span>
+                            <span class="font-display font-bold text-primary text-lg">What sets AK Fiberglass Works apart from other repair services?</span>
                             <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
-                            Turnaround time heavily depends on the extent of the damage. Minor gelcoat repairs or surface patches can often be completed in a single day. Larger structural reconstructions or full cap restorations may take a few weeks to ensure our uncompromising quality standards are met.
+                            Our commitment to quality, top-rated materials, certified technicians, and streamlined process ensure a hassle-free experience and long-lasting repairs. Additionally, our stellar customer reviews speak to our dedication to excellence.
                         </div>
                     </div>
 
                     <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
                         <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-display font-bold text-primary text-lg">Do you work directly with insurance companies?</span>
+                            <span class="font-display font-bold text-primary text-lg">How long does a fiberglass repair typically take?</span>
                             <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
-                            Absolutely. We frequently coordinate directly with major insurance providers for collision damage, storm/hail damage, and structural roof claims, providing detailed estimates and documentation to make the process as seamless as possible for you.
+                            The duration of the repair depends on the extent of the damage and the type of surface being repaired. We provide detailed timelines in our quotes, and our goal is to complete repairs efficiently without compromising quality.
                         </div>
                     </div>
 
                     <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
                         <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-display font-bold text-primary text-lg">What does your RV interior renovation entail?</span>
+                            <span class="font-display font-bold text-primary text-lg">Do you offer any warranty or guarantee on your repair work?</span>
                             <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
-                            Our bespoke interior renovations range from targeted updates—like replacing flooring, cabinetry, or upholstery—to fully custom layout overhauls designed for your specific lifestyle and comfort on the road.
+                            Yes, we stand behind our workmanship and materials. We offer warranties on our repairs to provide our customers with peace of mind and assurance of quality.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">Can you handle large-scale projects, such as extensive boat or RV repairs?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Absolutely! Our experienced team is equipped to handle projects of all sizes, from minor touch-ups to extensive repairs. We have the expertise and resources to tackle even the most challenging fiberglass repair jobs.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">Do you offer any additional services apart from fiberglass repair?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Yes, we offer a range of services, including boat detailing, RV roof service, and construction services for home projects. Our goal is to be your go-to partner for all your fiberglass and home improvement needs.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-gray-200 rounded-lg bg-offwhite overflow-hidden transition-all duration-300">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-display font-bold text-primary text-lg">How do I get started with AK Fiberglass Works?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6 text-gray-600 font-medium text-[15px] leading-relaxed">
+                            Getting started is easy! You can initiate a repair request online or schedule a free consultation with one of our expert technicians. We'll provide you with a detailed quote within 24 hours, and upon your approval, our team will begin the repair process at a time convenient for you.
                         </div>
                     </div>
                 </div>
@@ -684,10 +715,17 @@
                     <p class="font-light text-[15px] text-gray-400 leading-relaxed mb-8">
                         Welcome to AK Fiberglass Works, Colorado's leading professional RV detailing company, where exceptional quality services meet your every need.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/18ZYCAqYwn/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:border-transparent transition-all duration-300 group"><i class="fa-brands fa-facebook-f text-white text-sm group-hover:scale-110 transition-transform"></i></a>
-                        <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:border-transparent transition-all duration-300 group"><i class="fa-brands fa-instagram text-white text-sm group-hover:scale-110 transition-transform"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FF0000] hover:border-transparent transition-all duration-300 group"><i class="fa-brands fa-youtube text-white text-sm group-hover:scale-110 transition-transform"></i></a>
+                    
+                    <div class="flex space-x-5 mt-6">
+                        <a href="https://www.facebook.com/Akfiberglassworks" target="_blank" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#1877F2] transition-all duration-300 group shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                            <i class="fa-brands fa-facebook-f text-lg group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#E1306C] transition-all duration-300 group shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                            <i class="fa-brands fa-instagram text-lg group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#FF0000] transition-all duration-300 group shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                            <i class="fa-brands fa-youtube text-lg group-hover:scale-110 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -771,7 +809,7 @@
             }
         });
 
-        // Reviews Swiper Setting for Smooth Horizontal Scrolling
+        // Reviews Swiper Setting
         const reviewsSwiper = new Swiper('.reviewsSwiper', {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -793,15 +831,15 @@
             }
         });
 
-        // Glassmorphism Header Scroll Logic
+        // Back-to-Top Button Visibility on Scroll
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 80) {
-                header.classList.add('header-scrolled');
-                header.classList.remove('bg-transparent', 'pt-8');
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
             } else {
-                header.classList.remove('header-scrolled');
-                header.classList.add('bg-transparent', 'pt-8');
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
             }
         });
 
