@@ -93,8 +93,7 @@
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
-            /* Updated Vibrant Moving Gradient */
-            background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #38bdf8 100%, #0f172a 150%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #075985 100%, #0f172a 150%);
             background-size: 300% 300%;
             animation: vibrantGradientBG 12s ease infinite;
         }
@@ -206,7 +205,7 @@
             </div>
             
             <div class="w-1/3 hidden lg:flex justify-end shrink-0 z-50">
-                <a href="quote.html" class="btn-outline text-white px-8 py-3.5 text-[13px] font-bold tracking-[0.15em] uppercase rounded-full bg-white/5 backdrop-blur-md">
+                <a href="#hero-quote" class="btn-outline text-white px-8 py-3.5 text-[13px] font-bold tracking-[0.15em] uppercase rounded-full bg-white/5 backdrop-blur-md">
                     Get A Quote
                 </a>
             </div>
@@ -230,37 +229,83 @@
             
             <a href="pay.html" class="text-2xl font-display font-bold text-white mobile-link mt-4 hover:text-secondary transition-colors">Pay Now</a>
             <a href="blog.html" class="text-2xl font-display font-bold text-white mobile-link hover:text-secondary transition-colors">Blog</a>
-            <a href="quote.html" class="btn-solid px-10 py-4 mt-6 text-sm font-bold uppercase tracking-widest rounded-sm mobile-link">Get A Quote</a>
+            <a href="#hero-quote" class="btn-solid px-10 py-4 mt-6 text-sm font-bold uppercase tracking-widest rounded-sm mobile-link" onclick="toggleMenu()">Get A Quote</a>
         </div>
     </header>
 
-    <section class="relative h-screen w-full flex items-center overflow-hidden pt-20">
+    <section class="relative min-h-screen w-full flex items-center overflow-hidden pt-32 lg:pt-24 pb-20">
         <div class="absolute inset-0 z-0">
             <img src="https://akfiberglassworks.com/wp-content/uploads/al_opt_content/IMAGE/akfiberglassworks.com/wp-content/uploads/2024/03/c332fc8c-8763-4ad4-9a0d-bd9dcd16c2be.jpg.bv.webp" class="w-full h-full object-cover transform scale-110" alt="Hero Background">
             <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-primary/60 to-transparent mix-blend-multiply"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent"></div>
         </div>
         
-        <div class="w-full px-6 md:px-12 xl:px-24 relative z-10 text-white flex flex-col justify-center">
-            <div class="max-w-5xl" data-aos="fade-up" data-aos-duration="1200">
+        <div class="w-full px-6 md:px-12 xl:px-24 relative z-10 text-white flex flex-col lg:flex-row items-center gap-12 pt-10">
+            
+            <div class="w-full lg:w-3/5" data-aos="fade-right" data-aos-duration="1200">
                 <div class="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md border border-white/30 px-5 py-2 rounded-full mb-8 shadow-lg">
                     <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
                     <span class="text-xs font-bold tracking-[0.2em] uppercase text-white">Colorado's #1 Fiberglass Experts</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl lg:text-[6.5rem] font-display font-bold leading-[0.95] tracking-tight mb-8 drop-shadow-lg">
+                <h1 class="text-5xl md:text-6xl lg:text-[5.5rem] font-display font-bold leading-[1] tracking-tight mb-6 drop-shadow-lg">
                     REDEFINING <span class="text-secondary">QUALITY</span> <br> ON WATER & ROAD.
                 </h1>
-                <p class="text-lg md:text-xl font-medium text-gray-100 max-w-2xl mb-12 border-l-4 border-secondary pl-6 drop-shadow-md">
+                <p class="text-lg font-medium text-gray-200 max-w-xl mb-10 border-l-4 border-secondary pl-6 drop-shadow-md">
                     Delivering immaculate RV detailing, impenetrable marine fiberglass restoration, and bespoke interior renovations. Precision engineered for your next adventure.
                 </p>
-                <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <a href="quote.html" class="btn-solid px-10 py-4 font-bold tracking-widest uppercase text-sm w-full sm:w-auto text-center rounded-sm">Request Estimate</a>
-                    <a href="#services" class="text-white hover:text-secondary transition-all duration-300 flex items-center gap-3 uppercase tracking-widest text-sm font-bold group">
-                        <i class="fa-solid fa-play w-10 h-10 rounded-full border-2 border-white/40 flex items-center justify-center group-hover:border-secondary transition-all text-xs"></i> 
-                        Explore Services
-                    </a>
+                <div class="flex items-center gap-6">
+                    <div class="flex -space-x-4 shadow-lg rounded-full">
+                        <img class="w-12 h-12 rounded-full border-2 border-dark" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <img class="w-12 h-12 rounded-full border-2 border-dark" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <img class="w-12 h-12 rounded-full border-2 border-dark" src="https://randomuser.me/api/portraits/men/68.jpg" alt="User">
+                        <div class="w-12 h-12 rounded-full border-2 border-dark bg-secondary flex items-center justify-center text-xs font-bold text-dark">+500</div>
+                    </div>
+                    <div class="text-sm">
+                        <div class="flex text-yellow-400 text-xs mb-1 drop-shadow-md">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="text-gray-200 font-medium drop-shadow-md">5-Star Rated in Colorado</span>
+                    </div>
                 </div>
             </div>
+
+            <div class="w-full lg:w-2/5 max-w-md mx-auto lg:mx-0" id="hero-quote" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.4)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/30 blur-[60px] rounded-full pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-primary/40 blur-[60px] rounded-full pointer-events-none"></div>
+                    
+                    <h3 class="font-display text-2xl font-bold text-white mb-2 relative z-10">Get Your Fast Quote</h3>
+                    <p class="text-sm text-gray-300 mb-6 relative z-10">Enter your details for an immediate estimate and priority scheduling.</p>
+                    
+                    <form class="space-y-4 relative z-10">
+                        <div>
+                            <input type="text" placeholder="Full Name *" class="w-full bg-dark/50 border border-white/10 text-white placeholder-gray-400 px-4 py-3.5 rounded-lg focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" required>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="tel" placeholder="Phone *" class="w-full bg-dark/50 border border-white/10 text-white placeholder-gray-400 px-4 py-3.5 rounded-lg focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" required>
+                            <input type="email" placeholder="Email" class="w-full bg-dark/50 border border-white/10 text-white placeholder-gray-400 px-4 py-3.5 rounded-lg focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all">
+                        </div>
+                        <div>
+                            <select class="w-full bg-dark/50 border border-white/10 text-white placeholder-gray-400 px-4 py-3.5 rounded-lg focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all appearance-none cursor-pointer" required>
+                                <option value="" disabled selected>Select Service Needed...</option>
+                                <option value="rv-detailing" class="text-dark">RV Detailing</option>
+                                <option value="fiberglass-repair" class="text-dark">Fiberglass Repair</option>
+                                <option value="rv-roofing" class="text-dark">RV Roofing</option>
+                                <option value="boat-detailing" class="text-dark">Boat Detailing</option>
+                                <option value="interior-renovation" class="text-dark">Interior Renovation</option>
+                                <option value="other" class="text-dark">Other / Inspection</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-solid w-full py-4 rounded-lg font-bold tracking-widest uppercase text-sm mt-4 shadow-lg hover:shadow-secondary/40 transition-all flex justify-center items-center gap-2">
+                            Request Estimate <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="mt-5 flex items-center justify-center gap-2 text-[10px] text-gray-400 uppercase tracking-widest relative z-10">
+                        <i class="fa-solid fa-lock text-secondary"></i> YOUR INFORMATION IS ENCRYPTED
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -329,7 +374,7 @@
             </div>
             
             <div class="text-center mt-16" data-aos="fade-up">
-                <a href="quote.html" class="btn-solid inline-block px-10 py-4 font-bold tracking-widest uppercase text-xs rounded-sm">Experience The Standard</a>
+                <a href="#hero-quote" class="btn-solid inline-block px-10 py-4 font-bold tracking-widest uppercase text-xs rounded-sm">Experience The Standard</a>
             </div>
         </div>
     </section>
@@ -704,7 +749,8 @@
                     <span class="w-8 h-[2px] bg-secondary"></span> Ready to upgrade your vessel?
                 </p>
                 <h2 class="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-[1.1] tracking-tight hover:text-primary transition-colors duration-500 cursor-default">
-                    LET'S BUILD <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-blue-400">TOGETHER.</span>
+    START YOUR <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-blue-400">RESTORATION.</span>
+</h2>
                 </h2>
             </div>
 
@@ -745,32 +791,44 @@
                 <div class="w-full lg:col-span-4">
                     <h4 class="text-sm font-bold mb-6 font-display tracking-widest uppercase text-white">Contact & Location</h4>
                     
-                    <div class="space-y-6">
-                        <div>
-                            <a href="mailto:akfiberglassworks@gmail.com" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3">
-                                <i class="fa-regular fa-envelope text-secondary"></i> akfiberglassworks@gmail.com
-                            </a>
-                        </div>
+                    <div class="flex flex-col space-y-7">
+    
+    <div>
+        <a href="mailto:akfiberglassworks@gmail.com" class="text-[15px] font-light text-gray-400 flex items-center gap-3 hover:text-white transition-colors group">
+            <i class="fa-regular fa-envelope text-secondary"></i> 
+            <span class="relative pb-[2px] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-secondary after:transition-all after:duration-300 group-hover:after:w-full">
+                akfiberglassworks@gmail.com
+            </span>
+        </a>
+    </div>
                         
-                        <div class="flex flex-col space-y-3">
-                            <a href="tel:+17207327044" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3 w-max">
-                                <i class="fa-solid fa-phone text-secondary"></i> +1 720 732 7044
-                            </a>
-                            <a href="tel:+19709095343" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3 w-max">
-                                <i class="fa-solid fa-phone text-secondary opacity-0"></i> +1 970 909 5343
-                            </a>
-                        </div>
+    <div class="flex flex-col space-y-2">
+        <a href="tel:+17207327044" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3 w-max">
+            <i class="fa-solid fa-phone text-secondary"></i> +1 720 732 7044
+        </a>
+        <a href="tel:+19709095343" class="text-[15px] font-light text-gray-400 footer-link-hover flex items-center gap-3 w-max">
+            <i class="fa-solid fa-phone text-secondary opacity-0"></i> +1 970 909 5343
+        </a>
+    </div>
 
-                        <div class="flex items-start gap-3 text-[15px] font-light text-gray-400 mt-2">
-                            <i class="fa-solid fa-location-dot text-secondary mt-1"></i>
-                            <p>300 E 16th St Unit# 209,<br>Greeley, CO 80631, USA</p>
-                        </div>
+    <a href="https://www.google.com/maps/?q=300+E+16th+St+Unit%23+209,+Greeley,+CO+80631,+USA" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="flex items-start gap-3 text-[15px] font-light text-gray-400 hover:text-white transition-colors cursor-pointer group">
+        <i class="fa-solid fa-location-dot text-secondary mt-1 group-hover:scale-110 transition-transform"></i>
+        <p>300 E 16th St Unit# 209,<br>Greeley, CO 80631, USA</p>
+    </a>
 
-                        <div class="pt-2">
-                            <p class="text-sm text-white/50 mb-2 uppercase tracking-widest font-semibold">Business Hours</p>
-                            <div class="text-[14px] font-light text-gray-400 space-y-1">
-                                <p>Mon - Fri : 8:00 AM - 5:00 PM</p>
-                                <p>Sat : 9:00 AM - 4:00 PM | Sun : Closed</p>
+    <div>
+        <p class="text-sm text-white/50 mb-2 uppercase tracking-widest font-semibold">Business Hours</p>
+        <div class="text-[14px] font-light text-gray-400 space-y-1">
+            <p>Mon - Fri : 8:00 AM - 5:00 PM</p>
+            <p>Sat : 9:00 AM - 4:00 PM | Sun : Closed</p>
+        </div>
+    </div>
+
+</div>
+
                             </div>
                         </div>
                     </div>
@@ -779,12 +837,12 @@
             </div>
         </div>
 
-        <div class="w-full px-6 md:px-12 xl:px-24 py-8 border-t border-white/10 relative z-10 flex flex-col md:flex-row justify-between items-center text-[13px] text-gray-500 font-medium mt-auto bg-dark/30">
-            <p>&copy; 2026 AK Fiberglass Works. All Rights Reserved.</p>
-            <p class="mt-4 md:mt-0 uppercase tracking-widest font-bold text-white/30">
-                Prototype by <a href="https://www.skyloftdigital.com" target="_blank" class="text-secondary hover:text-white transition-colors underline underline-offset-4">Skyloft Digital</a>
-            </p>
-        </div>
+        <div class="w-full px-6 md:px-12 xl:px-24 py-8 relative z-10 flex flex-col md:flex-row justify-between items-center text-[13px] text-gray-500 font-medium mt-auto">
+    <p>&copy; 2026 AK Fiberglass Works. All Rights Reserved.</p>
+    <p class="mt-4 md:mt-0 uppercase tracking-widest font-bold text-white/30">
+        Prototype by <a href="https://www.skyloftdigital.com" target="_blank" class="text-secondary hover:text-white transition-colors underline underline-offset-4">Skyloft Digital</a>
+    </p>
+</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
